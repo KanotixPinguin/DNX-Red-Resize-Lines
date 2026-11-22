@@ -69,3 +69,12 @@ sudo ./install.sh uninstall
 
 Backups: `/opt/dnx-red-resize-lines-backups`.
 
+---
+
+## Verbindungen im DNX-Ökosystem & Synchronisation mit `DNX Styler`
+
+![DNX Gesamtarchitektur & Verbindungen](docs/dnx-architektur-verbindungen.png)
+![Datenflüsse: Spektrum, 3D-Hintergrund & Speicherung](docs/dnx-datenfluss-speicherung.png)
+
+* **Gemeinsame DOM-Anker & CSS-Variablen:** Obere Linie (`#dnx-top-line`, `96–600 px`) über `.webrx-top-container` (`--dnx-top-h`, `localStorage["dnx_styler_top_h"]`) und untere Linie (`#dnx-fft-line`, `24/40–400 px`) am Boden von `#openwebrx-frequency-container` / `.openwebrx-spectrum-container` (`--dnx-fft-h`, `localStorage["dnx_styler_fft_h"]`).
+* **Nahtlose Koexistenz mit `DNX-Styler`:** Läuft der vollständige `DNX Styler`, übernimmt dessen Block `#dnx-blk-linien` (`linieFarbe`, `linieDicke 1–8 px`, `topH`, `fftH`) inkl. Zahnrad-Spektrumleiste (`#dnx-spec-bar`) und Global-Standard-Sync (`styler_share.py :8098`) die Steuerung automatisch ohne doppelte Linien.
